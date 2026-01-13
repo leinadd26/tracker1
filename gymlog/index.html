@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Gym Log</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <a href="../index.html" class="back-btn">← Home</a>
+      <h1>Gym Log</h1>
+      <button class="ghost-btn" id="reloadBtn">Aktualisieren</button>
+    </header>
+
+    <section class="card">
+      <div class="summary">
+        <div class="summary-item">
+          <div class="summary-label">Einträge</div>
+          <div class="summary-value" id="countAll">0</div>
+        </div>
+        <div class="summary-item">
+          <div class="summary-label">Dieses Monat</div>
+          <div class="summary-value" id="countMonth">0</div>
+        </div>
+      </div>
+      <div class="hint" id="hintText">
+        Lädt Gym-Tage aus „Life Stats“. Wenn hier nichts steht: In Stats bei einem Datum „Gym“ aktivieren.
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-title">Gym-Tage</div>
+      <div class="list" id="gymList"></div>
+      <div class="empty" id="emptyState" style="display:none;">
+        Keine Gym-Einträge gefunden. Geh in <a href="../stats/index.html">Life Stats</a> und setze „Gym“ bei einem Tag.
+      </div>
+    </section>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

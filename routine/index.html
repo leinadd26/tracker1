@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Routine Shifter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app">
+    <header>
+      <a href="../index.html" class="back-btn">← Home</a>
+      <h1>Routine Shifter</h1>
+    </header>
+
+    <main>
+      <div class="form-group">
+        <label for="action">Welche Aktion ist dein Anker?</label>
+        <select id="action">
+          <optgroup label="Morgenroutine">
+            <option value="morning-0">Aufstehen & Trinken</option>
+            <option value="morning-1">Badezimmer</option>
+            <option value="morning-2">Anziehen & Packen</option>
+            <option value="morning-3">Tag planen</option>
+            <option value="morning-4">Bibel & Gebet</option>
+            <option value="morning-5">Frühstück</option>
+          </optgroup>
+          <optgroup label="Abendroutine">
+            <option value="evening-0">Bad / Duschen</option>
+            <option value="evening-1">Schlafbereit</option>
+            <option value="evening-2">Bibel lesen</option>
+            <option value="evening-3">Schlafen</option>
+          </optgroup>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="newTime">Wann startest du damit?</label>
+        <input type="time" id="newTime" value="06:00">
+      </div>
+
+      <div class="form-group">
+        <label for="sleepDuration">Wie viel Schlaf willst du?</label>
+        <div class="sleep-row">
+          <input type="time" id="sleepDuration" value="08:30" step="300">
+          <div class="sleep-hint" id="sleepHint">Ziel: 8h 30min</div>
+        </div>
+        <div class="hint-text">
+          Wenn dein Anker morgens ist → die Abendroutine wird angepasst.<br>
+          Wenn dein Anker abends ist → die Morgenroutine wird angepasst.
+        </div>
+      </div>
+
+      <div class="result-container">
+        <div class="result-header">📋 Dein neuer Plan:</div>
+        <pre id="routineText">Berechne Plan...</pre>
+      </div>
+
+      <div class="active-times" id="activeTimes">
+        <div class="times-row">
+          <div class="time-box">
+            <span class="time-label">☀️ Aufwachen</span>
+            <span class="time-value" id="wakeTime">06:00</span>
+          </div>
+          <div class="time-box">
+            <span class="time-label">🌙 Schlafen</span>
+            <span class="time-value" id="sleepTime">21:30</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="confirm-btn" id="confirmBtn">
+        <span class="confirm-icon">✓</span>
+        <span class="confirm-text">Routine bestätigen</span>
+      </button>
+
+      <div class="success-message" id="successMessage">
+        <span>✅ Zeiten für Seelenflamme übernommen!</span>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

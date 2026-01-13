@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Meine Apps">
+    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="manifest" href="manifest.json">
+    <title>Meine Apps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="home-container">
+        <header class="home-header">
+            <h1>Meine Apps</h1>
+            <p class="greeting" id="greeting">Guten Tag!</p>
+        </header>
+
+        <main class="app-grid">
+            <!-- Seelenflamme -->
+            <a href="seelenflamme/index.html" class="app-card seelenflamme-card">
+                <div class="app-icon">🔥</div>
+                <div class="app-info">
+                    <h2>Seelenflamme</h2>
+                    <p>Nähre deine Seele täglich</p>
+                </div>
+                <div class="app-arrow">→</div>
+            </a>
+
+            <!-- Routine Shifter -->
+            <a href="routine/index.html" class="app-card routine-card">
+                <div class="app-icon">⏰</div>
+                <div class="app-info">
+                    <h2>Routine Shifter</h2>
+                    <p>Plane deinen Tag flexibel</p>
+                </div>
+                <div class="app-arrow">→</div>
+            </a>
+
+            <!-- Life Stats -->
+<a href="stats/index.html" class="app-card stats-card">
+    <div class="app-icon">📊</div>
+    <div class="app-info">
+        <h2>Life Stats</h2>
+        <p>Dein Fortschritt & Statistiken</p>
+    </div>
+    <div class="app-arrow">→</div>
+</a>
+
+
+<!-- Gym Log -->
+    <a href="gymlog/index.html" class="app-card gymlog-card">
+  <div class="app-icon">🏋️</div>
+  <div class="app-info">
+    <h2>Gym Log</h2>
+    <p>Gym-Tage + Gewicht + Fotos</p>
+  </div>
+  <div class="app-arrow">→</div>
+</a>
+
+
+        </main>
+
+        <footer class="home-footer">
+            <p>Version 1.0.0</p>
+        </footer>
+    </div>
+
+
+            
+
+    <script>
+        // Begrüßung je nach Tageszeit
+        function updateGreeting() {
+            const hour = new Date().getHours();
+            const el = document.getElementById('greeting');
+            
+            if (hour >= 5 && hour < 12) {
+                el.textContent = '☀️ Guten Morgen!';
+            } else if (hour >= 12 && hour < 18) {
+                el.textContent = '🌤️ Guten Tag!';
+            } else if (hour >= 18 && hour < 22) {
+                el.textContent = '🌅 Guten Abend!';
+            } else {
+                el.textContent = '🌙 Gute Nacht!';
+            }
+        }
+        
+        updateGreeting();
+
+        // Service Worker
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js').catch(() => {});
+        }
+    </script>
+</body>
+</html>

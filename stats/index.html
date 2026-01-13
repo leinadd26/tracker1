@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <title>Life Stats</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header>
+      <a href="../index.html" class="back-btn">← Home</a>
+      <h1>Life Stats</h1>
+    </header>
+
+    <!-- Heute -->
+    <section class="card today-card">
+      <div class="card-header">
+        <span class="card-icon">📆</span>
+        <h2>Heute</h2>
+      </div>
+      <div class="today-grid" id="todayGrid">
+  <!-- Row 1 -->
+  <div class="today-item">
+    <span class="today-icon">☀️</span>
+    <span class="today-label">Morgen</span>
+    <span class="today-status pending" id="todayMorning">○</span>
+  </div>
+
+  <div class="today-item">
+    <span class="today-icon">🌙</span>
+    <span class="today-label">Abend</span>
+    <span class="today-status pending" id="todayEvening">○</span>
+  </div>
+
+  <div class="today-item">
+    <span class="today-icon">🏋️</span>
+    <span class="today-label">Gym</span>
+    <span class="today-status pending" id="todayGym">○</span>
+  </div>
+
+  <div class="today-item">
+    <span class="today-icon">🚫</span>
+    <span class="today-label">Fap</span>
+    <span class="today-status pending" id="todayFap">○</span>
+  </div>
+
+  <!-- Row 2 -->
+  <div class="today-item span-2">
+    <span class="today-icon">📵</span>
+    <span class="today-label">Screen</span>
+    <span class="today-value" id="todayScreen">--</span>
+  </div>
+
+  <div class="today-item span-2">
+    <span class="today-icon">👟</span>
+    <span class="today-label">Steps</span>
+    <span class="today-value" id="todaySteps">--</span>
+  </div>
+</div>
+    </section>
+
+    <!-- Screentime -->
+    <section class="card screentime-card expandable" id="screenCard">
+      <div class="card-header clickable">
+        <span class="card-icon">📵</span>
+        <h2>Screentime</h2>
+        <span class="expand-arrow">▼</span>
+      </div>
+
+      <div class="card-summary">
+        <div class="rank-display">
+          <img id="screenRankIcon" class="rank-icon" alt="Rank" />
+          <span class="rank-badge" id="screenRank">BRONZE</span>
+          <span class="rank-avg" id="screenAvg">--</span>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill" id="screenProgress" style="width: 0%"></div>
+        </div>
+        <div class="rank-next" id="screenNext">--</div>
+      </div>
+
+      <div class="card-details">
+        <div class="details-section">
+          <h4>📋 Rang-Anforderungen</h4>
+          <div class="requirements-list" id="screenRequirements"></div>
+        </div>
+
+        <div class="details-section">
+          <h4>📅 Letzte 14 Tage</h4>
+          <div class="daily-list" id="screenDaily"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Routine -->
+    <section class="card routine-card expandable" id="levelCard">
+      <div class="card-header clickable">
+        <span class="card-icon">⚡</span>
+        <h2>Routinen</h2>
+        <span class="expand-arrow">▼</span>
+      </div>
+
+      <div class="card-summary">
+        <div class="level-display">
+          <div class="level-badge">
+            <span class="level-number" id="routineLevel">0</span>
+            <span class="level-label">LEVEL</span>
+          </div>
+
+          <div class="level-stats">
+            <div class="stat-row">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-value" id="streakDays">0</span>
+              <span class="stat-label">Streak</span>
+            </div>
+            <div class="stat-row">
+              <span class="stat-icon">🌟</span>
+              <span class="stat-value" id="totalPoints">0</span>
+              <span class="stat-label">XP</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-fill level-progress" id="levelProgress" style="width: 0%"></div>
+        </div>
+        <div class="level-next" id="levelNext">--</div>
+      </div>
+
+      <div class="card-details">
+        <div class="details-section">
+          <h4>🎯 Level-Anforderungen</h4>
+          <div class="requirements-list" id="levelRequirements"></div>
+        </div>
+
+        <div class="details-section">
+          <h4>📅 Letzte 14 Tage</h4>
+          <div class="daily-list" id="levelDaily"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Boss -->
+    <section class="card boss-card" id="bossCard">
+      <div class="card-header">
+        <span class="card-icon">⚔️</span>
+        <h2>Wöchentlicher Boss</h2>
+        <span class="boss-week" id="bossWeek">KW --</span>
+      </div>
+
+      <div class="boss-display">
+        <div class="boss-hp">
+          <span class="hp-label">HP</span>
+          <div class="hp-bar">
+            <div class="hp-fill" id="bossHp" style="width: 100%"></div>
+          </div>
+          <span class="hp-percent" id="bossHpText">100%</span>
+        </div>
+        <div class="boss-info" id="bossInfo">--</div>
+        <div class="boss-reset" id="bossReset">--</div>
+        <div class="boss-year" id="bossYear">Jahr: --/--</div>
+      </div>
+    </section>
+
+    
+
+    <!-- Woche -->
+    <section class="card week-card expandable" id="weekCard">
+      <div class="card-header clickable">
+        <span class="card-icon">📈</span>
+        <h2>Diese Woche</h2>
+        <span class="expand-arrow">▼</span>
+      </div>
+
+      <div class="card-summary">
+        <div class="week-grid" id="weekGrid"></div>
+      </div>
+
+      <div class="card-details">
+        <div class="week-detail-list" id="weekDetailList"></div>
+      </div>
+    </section>
+
+    <!-- Eintragen + Sync -->
+    <section class="card entry-card">
+      <div class="card-header">
+        <span class="card-icon">✏️</span>
+        <h2>Eintragen</h2>
+      </div>
+
+      <div class="entry-form">
+        <div class="entry-row">
+          <label>Datum:</label>
+          <input type="date" id="entryDate">
+        </div>
+
+        <div class="entry-row">
+          <label>Screentime:</label>
+          <input type="time" id="entryScreen" step="300">
+        </div>
+
+   
+
+        <div class="entry-row">
+          <label>Schritte:</label>
+          <input
+  type="text"
+  id="entrySteps"
+  inputmode="numeric"
+  pattern="[0-9]*"
+  placeholder="z.B. 10000"
+/>
+        </div>
+
+        <div class="entry-row">
+          <label>Gewicht:</label>
+          <input
+  type="text"
+  id="entryWeight"
+  inputmode="decimal"
+  pattern="[0-9]*[.,]?[0-9]*"
+  placeholder="z.B. 74.5"
+/>
+        </div>
+
+
+	<div class="entry-toggles">
+          <button class="toggle-btn" id="toggleMorning" data-active="false"><span>☀️</span> Morgen</button>
+          <button class="toggle-btn" id="toggleEvening" data-active="false"><span>🌙</span> Abend</button>
+          <button class="toggle-btn" id="toggleGym" data-active="false"><span>🏋️</span> Gym</button>
+          <button class="toggle-btn fap-btn" id="toggleFap" data-active="false"><span>🚫</span> Fap</button>
+        </div>
+	
+
+        <button class="save-btn" id="saveEntry">💾 Speichern (→ Sheets)</button>
+
+        <div class="sync-row">
+          <button class="secondary-btn" id="pullSheetsBtn">⬇️ Sheets → App</button>
+          <button class="secondary-btn" id="pushTodayBtn">☁️ App → Sheets (Datum)</button>
+        </div>
+
+        <div class="sync-row">
+          <button class="danger-btn" id="resetSecretBtn">🔑 Secret neu setzen</button>
+          <button class="danger-btn" id="resetData">🗑️ Lokale Daten löschen</button>
+        </div>
+
+        <div class="sync-status" id="syncStatus"></div>
+      </div>
+    </section>
+
+    <!-- Statistiken -->
+    <section class="card month-card">
+      <div class="card-header">
+        <span class="card-icon">📊</span>
+        <h2>Statistiken</h2>
+      </div>
+
+      <div class="stats-controls">
+        <select class="month-select" id="monthSelect">
+          <option value="total">📊 Insgesamt</option>
+        </select>
+
+        <div class="view-toggle" id="viewToggle">
+          <button class="view-btn active" data-view="avg">Ø Durchschnitt</button>
+          <button class="view-btn" data-view="sum">Σ Summe</button>
+        </div>
+      </div>
+
+      <!-- Gym -->
+      <div class="stat-card expandable">
+        <div class="stat-header clickable">
+          <span class="month-icon">🏋️</span>
+          <div class="stat-info">
+            <span class="month-value" id="statGym">--</span>
+            <span class="month-label" id="labelGym">Gym</span>
+          </div>
+          <span class="expand-arrow">▼</span>
+        </div>
+        <div class="stat-details">
+          <div class="daily-list" id="gymDaily"></div>
+        </div>
+      </div>
+
+      <!-- Schritte -->
+      <div class="stat-card expandable">
+        <div class="stat-header clickable">
+          <span class="month-icon">👟</span>
+          <div class="stat-info">
+            <span class="month-value" id="statSteps">--</span>
+            <span class="month-label" id="labelSteps">Schritte</span>
+          </div>
+          <span class="expand-arrow">▼</span>
+        </div>
+        <div class="stat-details">
+          <div class="daily-list" id="stepsDaily"></div>
+        </div>
+      </div>
+
+      <!-- Fap -->
+      <div class="stat-card expandable">
+        <div class="stat-header clickable">
+          <span class="month-icon">🚫</span>
+          <div class="stat-info">
+            <span class="month-value" id="statFap">--</span>
+            <span class="month-label" id="labelFap">Fap</span>
+          </div>
+          <span class="expand-arrow">▼</span>
+        </div>
+        <div class="stat-details">
+          <div class="daily-list" id="fapDaily"></div>
+        </div>
+      </div>
+
+      <!-- Gewicht -->
+      <div class="stat-card expandable">
+        <div class="stat-header clickable">
+          <span class="month-icon">⚖️</span>
+          <div class="stat-info">
+            <div class="weight-display" id="weightDisplay">
+              <span class="month-value" id="statWeight">--</span>
+            </div>
+            <span class="month-label" id="labelWeight">Gewicht</span>
+          </div>
+          <span class="expand-arrow">▼</span>
+        </div>
+        <div class="stat-details">
+          <div class="daily-list" id="weightDaily"></div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #FFD700;
+    --bg-dark: #0f0f1a;
+    --bg-card: rgba(255, 255, 255, 0.06);
+    --text-light: #ffffff;
+    --text-muted: #888;
+}
+
+html {
+    background: #0f0f1a;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(180deg, #1a1a2e 0%, #16213e 50%, #0f0f23 100%);
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+    color: var(--text-light);
+    overscroll-behavior: none;
+}
+
+.home-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 30px 20px;
+    padding-top: calc(env(safe-area-inset-top, 20px) + 30px);
+    padding-bottom: calc(env(safe-area-inset-bottom, 20px) + 30px);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Header */
+.home-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.home-header h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.greeting {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+/* App Grid */
+.app-grid {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.app-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 20px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    text-decoration: none;
+    color: var(--text-light);
+    transition: all 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.app-card:active {
+    transform: scale(0.98);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.app-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+/* Individuelle Karten-Farben */
+.seelenflamme-card .app-icon {
+    background: linear-gradient(135deg, #ff6b00 0%, #ff9500 100%);
+    box-shadow: 0 8px 24px rgba(255, 107, 0, 0.3);
+}
+
+.routine-card .app-icon {
+    background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.3);
+}
+
+.app-info {
+    flex: 1;
+}
+
+.app-info h2 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.app-info p {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.app-arrow {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    transition: transform 0.2s ease;
+}
+
+.app-card:active .app-arrow {
+    transform: translateX(4px);
+}
+
+/* Footer */
+.home-footer {
+    text-align: center;
+    margin-top: 40px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+.stats-card .app-icon {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+}
+
+.gymlog-card .app-icon {
+  background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+  box-shadow: 0 8px 24px rgba(34, 197, 94, 0.3);
+}

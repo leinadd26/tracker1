@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <title>Seelenflamme</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app" id="mainApp">
+        <!-- Header -->
+        <header>
+            <a href="../index.html" class="back-btn">← Home</a>
+            <button class="icon-btn" id="settingsBtn">⚙️</button>
+            <div class="streak">
+                <span class="streak-icon">🔥</span>
+                <span class="streak-count" id="streakCount">0</span>
+                <span class="streak-label">Tage</span>
+            </div>
+        </header>
+
+        <!-- Flamme -->
+        <main>
+            <div class="flame-container" id="flameContainer">
+                <div class="flame-glow" id="flameGlow"></div>
+                <div class="flame">
+                    <div class="flame-inner" id="flameInner"></div>
+                    <div class="flame-gray" id="flameGray"></div>
+                </div>
+                <div class="percentage" id="percentage">100%</div>
+                <div class="time-left" id="timeLeft">Noch 24h 0m</div>
+                <div class="schedule-info" id="scheduleInfo"></div>
+            </div>
+
+            <!-- Bibelvers -->
+            <div class="verse-container">
+                <p class="verse" id="verse"></p>
+                <p class="verse-ref" id="verseRef"></p>
+            </div>
+        </main>
+
+        <!-- Aktivitäten -->
+        <section class="activities">
+            <h2>Nähre deine Seele</h2>
+            <div class="activity-grid" id="activityGrid"></div>
+            <div class="dev-tools" id="devTools">
+                <button class="dev-btn" data-delta="-0.25">−15m</button>
+                <button class="dev-btn" data-delta="-1">−1h</button>
+                <button class="dev-btn" id="devSpeedBtn">⏩ 1x</button>
+            </div>
+        </section>
+    </div>
+
+    <!-- SETTINGS PAGE -->
+    <div class="settings-page" id="settingsPage">
+        <header class="settings-header">
+            <button class="icon-btn" id="backBtn">←</button>
+            <h1>Einstellungen</h1>
+            <div style="width: 44px;"></div>
+        </header>
+
+        <div class="settings-content">
+            <!-- Gesamtzeit -->
+            <div class="settings-section">
+                <h3>⏱️ Gesamtzeit</h3>
+                <div class="time-setting">
+                    <input type="range" id="maxHoursSlider" min="6" max="48" value="24">
+                    <span class="time-value" id="maxHoursValue">24 Stunden</span>
+                </div>
+            </div>
+
+            <!-- Aktivitäten -->
+            <div class="settings-section">
+                <h3>📋 Aktivitäten</h3>
+                <div class="activities-list" id="activitiesList"></div>
+                <button class="add-btn" id="addActivityBtn">+ Neue Aktivität</button>
+            </div>
+
+            <!-- Entwickler -->
+            <div class="settings-section">
+                <h3>🧪 Entwickler</h3>
+                <div class="toggle-row">
+                    <span>Dev-Tools anzeigen</span>
+                    <label class="switch">
+                        <input type="checkbox" id="devModeToggle">
+                        <span class="switch-slider"></span>
+                    </label>
+                </div>
+                <p class="hint">Zeigt Test-Buttons (Zeit abziehen, Speed), nur zum Entwickeln.</p>
+            </div>
+
+            <!-- Update Log -->
+            <div class="settings-section">
+                <h3>📝 Update-Log</h3>
+                <div class="update-meta">
+                    <div>Version: <span id="appVersion"></span></div>
+                </div>
+                <div class="changelog" id="changelog"></div>
+            </div>
+
+            <!-- Reset -->
+            <div class="settings-section">
+                <h3>🔄 Zurücksetzen</h3>
+                <button class="reset-btn" id="resetBtn">Alle Daten löschen</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- EDIT AKTIVITÄT MODAL -->
+    <div class="modal-overlay" id="editModal">
+        <div class="modal">
+            <h2 id="modalTitle">Aktivität bearbeiten</h2>
+            
+            <div class="form-group">
+                <label>Emoji</label>
+                <div class="emoji-picker" id="emojiPicker">
+                    <span class="emoji-option" data-emoji="🙏">🙏</span>
+                    <span class="emoji-option" data-emoji="📖">📖</span>
+                    <span class="emoji-option" data-emoji="🎵">🎵</span>
+                    <span class="emoji-option" data-emoji="⛪">⛪</span>
+                    <span class="emoji-option" data-emoji="🤝">🤝</span>
+                    <span class="emoji-option" data-emoji="💭">💭</span>
+                    <span class="emoji-option" data-emoji="✝️">✝️</span>
+                    <span class="emoji-option" data-emoji="🕊️">🕊️</span>
+                    <span class="emoji-option" data-emoji="❤️">❤️</span>
+                    <span class="emoji-option" data-emoji="🌅">🌅</span>
+                    <span class="emoji-option" data-emoji="📝">📝</span>
+                    <span class="emoji-option" data-emoji="🎧">🎧</span>
+                    <span class="emoji-option" data-emoji="💪">💪</span>
+                    <span class="emoji-option" data-emoji="🌿">🌿</span>
+                    <span class="emoji-option" data-emoji="☀️">☀️</span>
+                    <span class="emoji-option" data-emoji="🌙">🌙</span>
+                    <span class="emoji-option" data-emoji="⭐">⭐</span>
+                    <span class="emoji-option" data-emoji="🙌">🙌</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Name</label>
+                <input type="text" id="activityName" placeholder="z.B. Gebet">
+            </div>
+
+            <div class="form-group">
+                <label>Zeit (Stunden): <span id="hoursDisplay">2</span>h</label>
+                <input type="range" id="activityHours" min="0.5" max="12" step="0.5" value="2">
+            </div>
+
+            <div class="modal-buttons">
+                <button class="btn-cancel" id="cancelModal">Abbrechen</button>
+                <button class="btn-save" id="saveModal">Speichern</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- UPDATE MODAL -->
+    <div class="modal-overlay" id="updateModal">
+        <div class="modal">
+            <h2>Update installiert</h2>
+            <p class="update-sub">Version <span id="appVersionModal"></span></p>
+            <ul class="update-list" id="updateModalList"></ul>
+            <div class="modal-buttons">
+                <button class="btn-save" id="closeUpdateModal">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
